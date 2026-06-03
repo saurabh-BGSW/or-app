@@ -1,0 +1,34 @@
+name: Flutter CI
+
+on:
+  pull_request:
+    branches: [ develop, staging ]
+
+jobs:
+  analyze_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Java (For Android Toolchain)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Flutter SDK
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Install Project Dependencies
+        run: flutter pub get
+
+#      - name: Check Formatting & Code Quality
+#        run: |
+#          dart format --output=none --set-exit-if-changed .
+#          flutter analyze
+#
+#      - name: Run Test Suite
+#        run: flutter test
