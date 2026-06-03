@@ -1,4 +1,4 @@
-name: Flutter CI
+name: Mobile Application Build
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  analyze_and_test:
+  Build Project:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -28,7 +28,9 @@ jobs:
           channel: 'stable'
 
       - name: Install Project Dependencies
-        run: flutter pub get
+        run: |
+          cd omrath_app
+          flutter pub get
 
 #      - name: Check Formatting & Code Quality
 #        run: |
