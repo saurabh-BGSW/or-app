@@ -1,8 +1,13 @@
 name: Flutter CI
 
 on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'omrath_app/**'
+      - '.github/workflows/flutter-build.yml'
   pull_request:
-    branches: [ develop, staging ]
+    branches: [ "main" ]
 
 jobs:
   analyze_and_test:
