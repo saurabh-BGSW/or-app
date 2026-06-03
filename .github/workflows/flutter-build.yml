@@ -30,7 +30,10 @@ jobs:
       - name: Install Project Dependencies
         run: |
           cd omrath_app
+          flutter clean
           flutter pub get
+          dart run flutter_launcher_icons
+          flutter clean
 
 #      - name: Check Formatting & Code Quality
 #        run: |
